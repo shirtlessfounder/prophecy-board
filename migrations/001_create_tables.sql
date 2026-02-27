@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS p_claim_facts (
 );
 
 CREATE TABLE IF NOT EXISTS p_media_assets (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  id TEXT PRIMARY KEY,
   type TEXT,
   url TEXT NOT NULL,
   source TEXT,
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS p_media_assets (
 CREATE TABLE IF NOT EXISTS p_connection_media_assets (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   connection_id TEXT REFERENCES p_connections(id) ON DELETE CASCADE,
-  media_asset_id UUID REFERENCES p_media_assets(id),
+  media_asset_id TEXT REFERENCES p_media_assets(id),
   caption TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -97,3 +97,9 @@ CREATE INDEX IF NOT EXISTS idx_p_claim_verses_claim ON p_claim_verses(claim_id);
 CREATE INDEX IF NOT EXISTS idx_p_claim_facts_claim ON p_claim_facts(claim_id);
 CREATE INDEX IF NOT EXISTS idx_p_votes_connection ON p_votes(connection_id);
 CREATE INDEX IF NOT EXISTS idx_p_audit_log_object ON p_audit_log(object_type, object_id);
+CREATE UNIQUE INDEX IF NOT EXISTS uq_p_connection_media_assets_pair
+  ON p_connection_media_assets(connection_id, media_asset_id);
+CREATE UNIQUE INDEX IF NOT EXISTS uq_p_claim_verses_pair
+  ON p_claim_verses(claim_id, verse_id);
+CREATE UNIQUE INDEX IF NOT EXISTS uq_p_claim_facts_triplet
+  ON p_claim_facts(claim_id, source_url, fact_text);

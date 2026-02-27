@@ -13,6 +13,32 @@ interface SeedData {
   connection_media_assets?: { connection_id: string; media_asset_id: string; caption?: string }[];
 }
 
+const verseTextCache = new Map<string, string>();
+
+async function fetchKjvVerseText(book: string, chapter: number, verse: number): Promise<string | null> {
+  const key = `${book}|${chapter}|${verse}`;
+  if (verseTextCache.has(key)) return verseTextCache.get(key)!;
+
+  const ref = `${book} ${chapter}:${verse}`;
+  const url = `https://bible-api.com/${encodeURIComponent(ref)}?translation=kjv`;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const payload = await res.json() as { text?: string; verses?: Array<{ text?: string }> };
+    const text =
+      (payload.text && payload.text.trim()) ||
+      (payload.verses?.[0]?.text && payload.verses[0].text.trim()) ||
+      null;
+    if (text) {
+      verseTextCache.set(key, text);
+      return text;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 async function seed() {
   const connectionString = process.env.DATABASE_URL || process.env.DB_URL;
   if (!connectionString) throw new Error('Missing DATABASE_URL (or DB_URL)');
@@ -56,18 +82,25 @@ async function seed() {
 
   // Claim verses — link claims to verses by book/chapter/verse lookup
   for (const cv of data.claim_verses) {
+    const kjvText =
+      await fetchKjvVerseText(cv.book, cv.chapter, cv.verse) ||
+      `[KJV text pending ingest] ${cv.book} ${cv.chapter}:${cv.verse}`;
+
     const { rows } = await pool.query(
-      'SELECT id FROM p_verses WHERE book = $1 AND chapter = $2 AND verse = $3',
-      [cv.book, cv.chapter, cv.verse]
+      `INSERT INTO p_verses (book, chapter, verse, text_kjv)
+       VALUES ($1, $2, $3, $4)
+       ON CONFLICT (book, chapter, verse) DO UPDATE SET
+         text_kjv = CASE
+           WHEN p_verses.text_kjv LIKE '[KJV text pending ingest]%' THEN EXCLUDED.text_kjv
+           ELSE p_verses.text_kjv
+         END
+       RETURNING id`,
+      [cv.book, cv.chapter, cv.verse, kjvText]
     );
-    if (rows.length === 0) {
-      console.warn(`  ⚠ verse not found: ${cv.book} ${cv.chapter}:${cv.verse} (run ingest-kjv first)`);
-      continue;
-    }
     await pool.query(
       `INSERT INTO p_claim_verses (claim_id, verse_id)
        VALUES ($1, $2)
-       ON CONFLICT DO NOTHING`,
+       ON CONFLICT (claim_id, verse_id) DO NOTHING`,
       [cv.claim_id, rows[0].id]
     );
   }
@@ -78,7 +111,7 @@ async function seed() {
     await pool.query(
       `INSERT INTO p_claim_facts (claim_id, source_url, fact_text)
        VALUES ($1, $2, $3)
-       ON CONFLICT DO NOTHING`,
+       ON CONFLICT (claim_id, source_url, fact_text) DO NOTHING`,
       [cf.claim_id, cf.source_url, cf.fact]
     );
   }
@@ -88,7 +121,7 @@ async function seed() {
   if (data.media_assets?.length) {
     for (const ma of data.media_assets) {
       await pool.query(
-        `INSERT INTO media_assets (id, type, url, source, attribution)
+        `INSERT INTO p_media_assets (id, type, url, source, attribution)
          VALUES ($1, $2, $3, $4, $5)
          ON CONFLICT (id) DO UPDATE SET url = $3, source = $4`,
         [ma.id, ma.type, ma.url, ma.source || null, ma.caption || null]
@@ -101,9 +134,10 @@ async function seed() {
   if (data.connection_media_assets?.length) {
     for (const cma of data.connection_media_assets) {
       await pool.query(
-        `INSERT INTO connection_media_assets (connection_id, media_asset_id, caption)
+        `INSERT INTO p_connection_media_assets (connection_id, media_asset_id, caption)
          VALUES ($1, $2, $3)
-         ON CONFLICT DO NOTHING`,
+         ON CONFLICT (connection_id, media_asset_id) DO UPDATE
+         SET caption = EXCLUDED.caption`,
         [cma.connection_id, cma.media_asset_id, cma.caption || null]
       );
     }
