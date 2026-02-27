@@ -24,28 +24,27 @@ function RedStringEdge({
 
   const status = (data?.status as string) || 'established';
   const opacity = status === 'established' ? 0.9 : 0.4;
+  const core = status === 'established' ? '#3dff9a' : '#56f7a6';
 
   return (
     <>
-      {/* Glow effect */}
       <path
         d={edgePath}
         fill="none"
-        stroke="#dc2626"
+        stroke={core}
         strokeWidth={6}
         strokeOpacity={opacity * 0.3}
         filter="url(#glow)"
       />
-      {/* Main string */}
       <path
         id={id}
         d={edgePath}
         fill="none"
-        stroke="#dc2626"
+        stroke={core}
         strokeWidth={2}
         strokeOpacity={opacity}
         strokeDasharray={status === 'pending' ? '5 5' : undefined}
-        className="cursor-pointer hover:stroke-red-400 transition-colors"
+        className="cursor-pointer transition-colors"
       />
     </>
   );

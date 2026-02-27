@@ -107,30 +107,32 @@ export default function Board() {
 
   if (loading) {
     return (
-      <div className="h-screen w-screen flex items-center justify-center bg-zinc-950">
-        <div className="text-zinc-400 text-sm">Loading the board...</div>
+      <div className="h-screen w-screen flex items-center justify-center matrix-shell">
+        <div className="matrix-panel rounded-xl px-5 py-3 text-sm text-emerald-200/80">Booting board matrix...</div>
       </div>
     );
   }
 
   return (
-    <div className="h-screen w-screen relative" style={{ background: '#1a1510' }}>
+    <div className="h-screen w-screen relative matrix-shell">
       {svgDefs}
 
-      {/* Cork board texture overlay */}
+      {/* digital rain haze */}
       <div
-        className="absolute inset-0 opacity-20 pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(circle at 20% 50%, rgba(139, 90, 43, 0.3) 0%, transparent 50%),
-                           radial-gradient(circle at 80% 20%, rgba(139, 90, 43, 0.2) 0%, transparent 50%)`,
+          background:
+            'radial-gradient(circle at 15% 15%, rgba(61, 255, 154, 0.13) 0%, transparent 35%), radial-gradient(circle at 82% 30%, rgba(54, 212, 124, 0.1) 0%, transparent 40%), radial-gradient(circle at 52% 85%, rgba(47, 186, 118, 0.07) 0%, transparent 45%)',
         }}
       />
 
-      {/* Desk lamp glow */}
+      {/* grid overlay */}
       <div
-        className="absolute top-0 left-0 w-96 h-96 pointer-events-none"
+        className="absolute inset-0 pointer-events-none opacity-45"
         style={{
-          background: 'radial-gradient(circle at 10% 10%, rgba(255, 200, 100, 0.08) 0%, transparent 60%)',
+          backgroundImage:
+            'linear-gradient(rgba(61,255,154,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(61,255,154,0.04) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
         }}
       />
 
@@ -147,9 +149,9 @@ export default function Board() {
         maxZoom={2}
         proOptions={{ hideAttribution: true }}
       >
-        <Background color="#3d2e1a" gap={40} size={1} />
+        <Background color="rgba(61, 255, 154, 0.25)" gap={48} size={1} />
         <Controls
-          className="!bg-zinc-900 !border-zinc-700 !shadow-lg [&>button]:!bg-zinc-800 [&>button]:!border-zinc-700 [&>button]:!text-zinc-300 [&>button:hover]:!bg-zinc-700"
+          className="!bg-emerald-950/80 !border-emerald-700/40 !shadow-lg [&>button]:!bg-emerald-900/80 [&>button]:!border-emerald-700/50 [&>button]:!text-emerald-200 [&>button:hover]:!bg-emerald-800"
         />
       </ReactFlow>
 
@@ -159,15 +161,14 @@ export default function Board() {
       />
 
       {/* Title */}
-      <div className="absolute top-4 left-4 z-10">
+      <div className="absolute top-4 left-4 z-10 matrix-panel rounded-xl px-4 py-3 max-w-xs">
         <h1
-          className="text-2xl text-amber-200/80 font-bold tracking-tight"
-          style={{ fontFamily: 'Georgia, serif' }}
+          className="text-xl font-bold matrix-title"
         >
           PROPHECY BOARD
         </h1>
-        <p className="text-xs text-amber-200/30 mt-1">
-          {edges.length} connections · click a red string to view evidence
+        <p className="text-xs text-emerald-100/60 mt-1">
+          {edges.length} links live · tap a vector to inspect
         </p>
       </div>
     </div>

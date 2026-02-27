@@ -17,20 +17,15 @@ function SourceCard({ data }: NodeProps & { data: SourceCardData }) {
 
   return (
     <div className="relative group">
-      {/* Pushpin */}
-      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-red-700 border-2 border-red-900 shadow-md z-10" />
+      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-emerald-300 border border-emerald-100/70 shadow-md z-10 matrix-pulse" />
 
       <div
-        className="w-56 p-4 rounded shadow-lg border border-amber-800/30 cursor-pointer"
-        style={{
-          background: 'linear-gradient(135deg, #f5e6c8 0%, #e8d5a8 50%, #dbc694 100%)',
-          fontFamily: 'Georgia, serif',
-        }}
+        className="w-56 p-4 rounded-md matrix-panel border-emerald-500/30 cursor-pointer transition-transform duration-150 group-hover:-translate-y-0.5"
       >
-        <div className="text-xs text-amber-900/60 mb-1 tracking-wide uppercase">
+        <div className="text-[10px] text-emerald-200/60 mb-1 tracking-widest uppercase">
           {book} {chapter}:{verse}
         </div>
-        <div className="text-sm text-amber-950 font-semibold leading-tight">
+        <div className="text-sm text-emerald-100 font-semibold leading-tight">
           {data.name}
         </div>
         {tags.length > 0 && (
@@ -38,7 +33,7 @@ function SourceCard({ data }: NodeProps & { data: SourceCardData }) {
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] px-1.5 py-0.5 rounded bg-amber-900/10 text-amber-800"
+                className="text-[10px] px-1.5 py-0.5 rounded matrix-chip"
               >
                 {tag}
               </span>
@@ -47,8 +42,8 @@ function SourceCard({ data }: NodeProps & { data: SourceCardData }) {
         )}
       </div>
 
-      <Handle type="source" position={Position.Right} className="!bg-red-700 !w-2 !h-2" />
-      <Handle type="target" position={Position.Right} className="!bg-red-700 !w-2 !h-2" />
+      <Handle type="source" position={Position.Right} className="!bg-emerald-300 !w-2 !h-2 !border !border-emerald-100" />
+      <Handle type="target" position={Position.Right} className="!bg-emerald-300 !w-2 !h-2 !border !border-emerald-100" />
     </div>
   );
 }
