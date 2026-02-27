@@ -128,7 +128,9 @@ export default function EvidencePanel({ connectionId, onClose }: EvidencePanelPr
               <div className="space-y-3">
                 {detail.media.map(m => (
                   <div key={m.id} className="rounded overflow-hidden border border-emerald-700/30 bg-black/30">
-                    <img src={m.url} alt={m.caption || ''} className="w-full max-h-52 object-cover" />
+                    <div className="w-full h-56 bg-black/40 flex items-center justify-center">
+                      <img src={m.url} alt={m.caption || ''} className="max-w-full max-h-full object-contain" />
+                    </div>
                     {m.caption && (
                       <div className="text-xs text-emerald-100/70 p-2 bg-emerald-950/40">{m.caption}</div>
                     )}

@@ -122,16 +122,16 @@ export default function Board() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(circle at 15% 15%, rgba(61, 255, 154, 0.13) 0%, transparent 35%), radial-gradient(circle at 82% 30%, rgba(54, 212, 124, 0.1) 0%, transparent 40%), radial-gradient(circle at 52% 85%, rgba(47, 186, 118, 0.07) 0%, transparent 45%)',
+            'radial-gradient(circle at 15% 15%, rgba(88, 184, 137, 0.08) 0%, transparent 35%), radial-gradient(circle at 82% 30%, rgba(72, 158, 120, 0.06) 0%, transparent 40%), radial-gradient(circle at 52% 85%, rgba(64, 138, 107, 0.05) 0%, transparent 45%)',
         }}
       />
 
       {/* grid overlay */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-45"
+        className="absolute inset-0 pointer-events-none opacity-30"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(61,255,154,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(61,255,154,0.04) 1px, transparent 1px)',
+            'linear-gradient(rgba(88,184,137,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(88,184,137,0.03) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
         }}
       />
@@ -149,7 +149,7 @@ export default function Board() {
         maxZoom={2}
         proOptions={{ hideAttribution: true }}
       >
-        <Background color="rgba(61, 255, 154, 0.25)" gap={48} size={1} />
+        <Background color="rgba(88, 184, 137, 0.14)" gap={48} size={1} />
         <Controls
           className="!bg-emerald-950/80 !border-emerald-700/40 !shadow-lg [&>button]:!bg-emerald-900/80 [&>button]:!border-emerald-700/50 [&>button]:!text-emerald-200 [&>button:hover]:!bg-emerald-800"
         />

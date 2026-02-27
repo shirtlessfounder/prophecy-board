@@ -23,8 +23,8 @@ function RedStringEdge({
   });
 
   const status = (data?.status as string) || 'established';
-  const opacity = status === 'established' ? 0.9 : 0.4;
-  const core = status === 'established' ? '#3dff9a' : '#56f7a6';
+  const opacity = status === 'established' ? 0.78 : 0.36;
+  const core = status === 'established' ? '#58b889' : '#4aa77c';
 
   return (
     <>
