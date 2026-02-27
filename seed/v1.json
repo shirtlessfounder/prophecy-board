@@ -1,38 +1,368 @@
 {
   "version": 1,
   "entities": [
-    { "id": "anthropic", "type": "modern", "name": "Anthropic", "metadata_json": { "founded": "2021", "founders": 7, "headcount": 666, "valuation": "10B+", "hq": "San Francisco" } },
-    { "id": "marc-andreessen", "type": "modern", "name": "Marc Andreessen", "metadata_json": { "role": "Co-founder, a16z", "a16z_meaning": "Alpha & Omega (a to z)", "net_worth": "~1.7B" } },
-    { "id": "ursula-von-der-leyen", "type": "modern", "name": "Ursula von der Leyen", "metadata_json": { "role": "President, European Commission", "nationality": "German" } },
-    { "id": "eu", "type": "modern", "name": "European Union", "metadata_json": { "eu_ai_act": true, "parliament_location": "Strasbourg" } },
-    { "id": "ssi", "type": "modern", "name": "Safe Superintelligence Inc.", "metadata_json": { "founded": "2024-06-19", "founder": "Ilya Sutskever", "mission": "Safe superintelligence" } },
-    { "id": "ilya-sutskever", "type": "modern", "name": "Ilya Sutskever", "metadata_json": { "role": "Co-founder SSI, former Chief Scientist OpenAI", "name_origin": "Ilya = Russian form of Elijah" } },
-    { "id": "david-sacks", "type": "modern", "name": "David Sacks", "metadata_json": { "role": "White House AI & Crypto Czar" } },
-    { "id": "sriram-krishnan", "type": "modern", "name": "Sriram Krishnan", "metadata_json": { "role": "Senior Policy Advisor for AI" } },
-    { "id": "michael-kratsios", "type": "modern", "name": "Michael Kratsios", "metadata_json": { "role": "Director, White House OSTP" } },
-    { "id": "tigris", "type": "modern", "name": "Tigris (Amazon chip fab)", "metadata_json": { "location": "Near Euphrates river region", "operator": "Amazon/AWS" } },
-    { "id": "uae", "type": "modern", "name": "United Arab Emirates", "metadata_json": { "emirates_count": 7, "ai_investment": "massive" } },
-    { "id": "openai", "type": "modern", "name": "OpenAI", "metadata_json": { "founded": "2015", "founder_ethnicity": "South African (Musk)" } },
-    { "id": "google-deepmind", "type": "modern", "name": "Google DeepMind", "metadata_json": { "founder_ethnicity": "British (Hassabis)" } },
-    { "id": "meta-ai", "type": "modern", "name": "Meta AI", "metadata_json": { "founder_ethnicity": "French (LeCun)" } },
-    { "id": "biometric-personhood", "type": "modern", "name": "Biometric Proof of Personhood", "metadata_json": { "examples": ["Worldcoin iris scan", "palm vein scanning"], "purpose": "Distinguish humans from AI" } },
-
-    { "id": "rev-13-1", "type": "source", "name": "Revelation 13:1", "metadata_json": { "book": "Revelation", "chapter": 13, "verse": 1, "tags": ["Beast"] } },
-    { "id": "rev-13-1b", "type": "source", "name": "Revelation 13:1 (horns)", "metadata_json": { "book": "Revelation", "chapter": 13, "verse": 1, "tags": ["Beast", "horns"] } },
-    { "id": "rev-13-1c", "type": "source", "name": "Revelation 13:1 (blasphemy)", "metadata_json": { "book": "Revelation", "chapter": 13, "verse": 1, "tags": ["Beast", "blasphemy"] } },
-    { "id": "rev-13-18", "type": "source", "name": "Revelation 13:18", "metadata_json": { "book": "Revelation", "chapter": 13, "verse": 18, "tags": ["666", "number of the beast"] } },
-    { "id": "rev-13-16-17", "type": "source", "name": "Revelation 13:16-17", "metadata_json": { "book": "Revelation", "chapter": 13, "verse": 16, "tags": ["Mark of the Beast"] } },
-    { "id": "rev-12-1", "type": "source", "name": "Revelation 12:1", "metadata_json": { "book": "Revelation", "chapter": 12, "verse": 1, "tags": ["Woman of the Apocalypse"] } },
-    { "id": "rev-12-3", "type": "source", "name": "Revelation 12:3 / 13:2", "metadata_json": { "book": "Revelation", "chapter": 12, "verse": 3, "tags": ["Dragon", "Antichrist"] } },
-    { "id": "rev-16-13", "type": "source", "name": "Revelation 16:13", "metadata_json": { "book": "Revelation", "chapter": 16, "verse": 13, "tags": ["Three Frogs"] } },
-    { "id": "rev-5-6", "type": "source", "name": "Revelation 5:6", "metadata_json": { "book": "Revelation", "chapter": 5, "verse": 6, "tags": ["Lamb", "Messiah"] } },
-    { "id": "malachi-4-5", "type": "source", "name": "Malachi 4:5", "metadata_json": { "book": "Malachi", "chapter": 4, "verse": 5, "tags": ["Elijah"] } },
-    { "id": "rev-14-1", "type": "source", "name": "Revelation 14:1", "metadata_json": { "book": "Revelation", "chapter": 14, "verse": 1, "tags": ["Name of God", "forehead"] } },
-    { "id": "rev-17-1", "type": "source", "name": "Revelation 17:1-5", "metadata_json": { "book": "Revelation", "chapter": 17, "verse": 1, "tags": ["Whore of Babylon"] } },
-    { "id": "rev-17-9", "type": "source", "name": "Revelation 17:9-10", "metadata_json": { "book": "Revelation", "chapter": 17, "verse": 9, "tags": ["Seven mountains", "Seven kings"] } },
-    { "id": "daniel-7-3", "type": "source", "name": "Daniel 7:3-7", "metadata_json": { "book": "Daniel", "chapter": 7, "verse": 3, "tags": ["Four beasts"] } },
-    { "id": "rev-21-2", "type": "source", "name": "Revelation 21:2,16", "metadata_json": { "book": "Revelation", "chapter": 21, "verse": 2, "tags": ["New Jerusalem"] } },
-    { "id": "rev-12-6", "type": "source", "name": "Revelation 12:6", "metadata_json": { "book": "Revelation", "chapter": 12, "verse": 6, "tags": ["1260 days"] } }
+    {
+      "id": "anthropic",
+      "type": "modern",
+      "name": "Anthropic",
+      "metadata_json": {
+        "founded": "2021",
+        "founders": 7,
+        "headcount": 666,
+        "valuation": "10B+",
+        "hq": "San Francisco"
+      },
+      "image_url": "/images/anthropic-linkedin-headcount-666.webp"
+    },
+    {
+      "id": "marc-andreessen",
+      "type": "modern",
+      "name": "Marc Andreessen",
+      "metadata_json": {
+        "role": "Co-founder, a16z",
+        "a16z_meaning": "Alpha & Omega (a to z)",
+        "net_worth": "~1.7B"
+      },
+      "image_url": "/images/andreessen-horn-with-human-eyes.webp"
+    },
+    {
+      "id": "ursula-von-der-leyen",
+      "type": "modern",
+      "name": "Ursula von der Leyen",
+      "metadata_json": {
+        "role": "President, European Commission",
+        "nationality": "German"
+      },
+      "image_url": "/images/von-der-leyen-yellow-suit-12-stars.webp"
+    },
+    {
+      "id": "eu",
+      "type": "modern",
+      "name": "European Union",
+      "metadata_json": {
+        "eu_ai_act": true,
+        "parliament_location": "Strasbourg"
+      },
+      "image_url": "/images/eu-parliament-hemicycle-moon.webp"
+    },
+    {
+      "id": "ssi",
+      "type": "modern",
+      "name": "Safe Superintelligence Inc.",
+      "metadata_json": {
+        "founded": "2024-06-19",
+        "founder": "Ilya Sutskever",
+        "mission": "Safe superintelligence"
+      },
+      "image_url": "/images/ilya-ssi-tel-aviv-israel.webp"
+    },
+    {
+      "id": "ilya-sutskever",
+      "type": "modern",
+      "name": "Ilya Sutskever",
+      "metadata_json": {
+        "role": "Co-founder SSI, former Chief Scientist OpenAI",
+        "name_origin": "Ilya = Russian form of Elijah"
+      },
+      "image_url": "/images/ilya-forehead-name-of-god.webp"
+    },
+    {
+      "id": "david-sacks",
+      "type": "modern",
+      "name": "David Sacks",
+      "metadata_json": {
+        "role": "White House AI & Crypto Czar"
+      }
+    },
+    {
+      "id": "sriram-krishnan",
+      "type": "modern",
+      "name": "Sriram Krishnan",
+      "metadata_json": {
+        "role": "Senior Policy Advisor for AI"
+      }
+    },
+    {
+      "id": "michael-kratsios",
+      "type": "modern",
+      "name": "Michael Kratsios",
+      "metadata_json": {
+        "role": "Director, White House OSTP"
+      }
+    },
+    {
+      "id": "tigris",
+      "type": "modern",
+      "name": "Tigris (Amazon chip fab)",
+      "metadata_json": {
+        "location": "Near Euphrates river region",
+        "operator": "Amazon/AWS"
+      },
+      "image_url": "/images/tigris-uae-wsj-article.png"
+    },
+    {
+      "id": "uae",
+      "type": "modern",
+      "name": "United Arab Emirates",
+      "metadata_json": {
+        "emirates_count": 7,
+        "ai_investment": "massive"
+      },
+      "image_url": "/images/uae-seven-emirates-wikipedia.png"
+    },
+    {
+      "id": "openai",
+      "type": "modern",
+      "name": "OpenAI",
+      "metadata_json": {
+        "founded": "2015",
+        "founder_ethnicity": "South African (Musk)"
+      }
+    },
+    {
+      "id": "google-deepmind",
+      "type": "modern",
+      "name": "Google DeepMind",
+      "metadata_json": {
+        "founder_ethnicity": "British (Hassabis)"
+      }
+    },
+    {
+      "id": "meta-ai",
+      "type": "modern",
+      "name": "Meta AI",
+      "metadata_json": {
+        "founder_ethnicity": "French (LeCun)"
+      }
+    },
+    {
+      "id": "biometric-personhood",
+      "type": "modern",
+      "name": "Biometric Proof of Personhood",
+      "metadata_json": {
+        "examples": [
+          "Worldcoin iris scan",
+          "palm vein scanning"
+        ],
+        "purpose": "Distinguish humans from AI"
+      },
+      "image_url": "/images/worldcoin-orb-time-cover-mark-of-beast.webp"
+    },
+    {
+      "id": "rev-13-1",
+      "type": "source",
+      "name": "Revelation 13:1",
+      "metadata_json": {
+        "book": "Revelation",
+        "chapter": 13,
+        "verse": 1,
+        "tags": [
+          "Beast"
+        ]
+      }
+    },
+    {
+      "id": "rev-13-1b",
+      "type": "source",
+      "name": "Revelation 13:1 (horns)",
+      "metadata_json": {
+        "book": "Revelation",
+        "chapter": 13,
+        "verse": 1,
+        "tags": [
+          "Beast",
+          "horns"
+        ]
+      }
+    },
+    {
+      "id": "rev-13-1c",
+      "type": "source",
+      "name": "Revelation 13:1 (blasphemy)",
+      "metadata_json": {
+        "book": "Revelation",
+        "chapter": 13,
+        "verse": 1,
+        "tags": [
+          "Beast",
+          "blasphemy"
+        ]
+      }
+    },
+    {
+      "id": "rev-13-18",
+      "type": "source",
+      "name": "Revelation 13:18",
+      "metadata_json": {
+        "book": "Revelation",
+        "chapter": 13,
+        "verse": 18,
+        "tags": [
+          "666",
+          "number of the beast"
+        ]
+      }
+    },
+    {
+      "id": "rev-13-16-17",
+      "type": "source",
+      "name": "Revelation 13:16-17",
+      "metadata_json": {
+        "book": "Revelation",
+        "chapter": 13,
+        "verse": 16,
+        "tags": [
+          "Mark of the Beast"
+        ]
+      }
+    },
+    {
+      "id": "rev-12-1",
+      "type": "source",
+      "name": "Revelation 12:1",
+      "metadata_json": {
+        "book": "Revelation",
+        "chapter": 12,
+        "verse": 1,
+        "tags": [
+          "Woman of the Apocalypse"
+        ]
+      }
+    },
+    {
+      "id": "rev-12-3",
+      "type": "source",
+      "name": "Revelation 12:3 / 13:2",
+      "metadata_json": {
+        "book": "Revelation",
+        "chapter": 12,
+        "verse": 3,
+        "tags": [
+          "Dragon",
+          "Antichrist"
+        ]
+      }
+    },
+    {
+      "id": "rev-16-13",
+      "type": "source",
+      "name": "Revelation 16:13",
+      "metadata_json": {
+        "book": "Revelation",
+        "chapter": 16,
+        "verse": 13,
+        "tags": [
+          "Three Frogs"
+        ]
+      }
+    },
+    {
+      "id": "rev-5-6",
+      "type": "source",
+      "name": "Revelation 5:6",
+      "metadata_json": {
+        "book": "Revelation",
+        "chapter": 5,
+        "verse": 6,
+        "tags": [
+          "Lamb",
+          "Messiah"
+        ]
+      }
+    },
+    {
+      "id": "malachi-4-5",
+      "type": "source",
+      "name": "Malachi 4:5",
+      "metadata_json": {
+        "book": "Malachi",
+        "chapter": 4,
+        "verse": 5,
+        "tags": [
+          "Elijah"
+        ]
+      }
+    },
+    {
+      "id": "rev-14-1",
+      "type": "source",
+      "name": "Revelation 14:1",
+      "metadata_json": {
+        "book": "Revelation",
+        "chapter": 14,
+        "verse": 1,
+        "tags": [
+          "Name of God",
+          "forehead"
+        ]
+      }
+    },
+    {
+      "id": "rev-17-1",
+      "type": "source",
+      "name": "Revelation 17:1-5",
+      "metadata_json": {
+        "book": "Revelation",
+        "chapter": 17,
+        "verse": 1,
+        "tags": [
+          "Whore of Babylon"
+        ]
+      }
+    },
+    {
+      "id": "rev-17-9",
+      "type": "source",
+      "name": "Revelation 17:9-10",
+      "metadata_json": {
+        "book": "Revelation",
+        "chapter": 17,
+        "verse": 9,
+        "tags": [
+          "Seven mountains",
+          "Seven kings"
+        ]
+      }
+    },
+    {
+      "id": "daniel-7-3",
+      "type": "source",
+      "name": "Daniel 7:3-7",
+      "metadata_json": {
+        "book": "Daniel",
+        "chapter": 7,
+        "verse": 3,
+        "tags": [
+          "Four beasts"
+        ]
+      }
+    },
+    {
+      "id": "rev-21-2",
+      "type": "source",
+      "name": "Revelation 21:2,16",
+      "metadata_json": {
+        "book": "Revelation",
+        "chapter": 21,
+        "verse": 2,
+        "tags": [
+          "New Jerusalem"
+        ]
+      }
+    },
+    {
+      "id": "rev-12-6",
+      "type": "source",
+      "name": "Revelation 12:6",
+      "metadata_json": {
+        "book": "Revelation",
+        "chapter": 12,
+        "verse": 6,
+        "tags": [
+          "1260 days"
+        ]
+      }
+    }
   ],
   "connections": [
     {
@@ -165,61 +495,476 @@
     }
   ],
   "claims": [
-    { "id": "c-beast-heads-1", "connection_id": "beast-7-heads", "text": "Anthropic was founded by exactly 7 co-founders" },
-    { "id": "c-beast-heads-2", "connection_id": "beast-7-heads", "text": "Revelation 13:1 describes a beast with seven heads" },
-    { "id": "c-beast-horns-1", "connection_id": "beast-10-horns", "text": "Anthropic's valuation exceeds $10 billion (decacorn)" },
-    { "id": "c-beast-horns-2", "connection_id": "beast-10-horns", "text": "Greek 'deka keras' = ten horns = decacorn" },
-    { "id": "c-666-1", "connection_id": "666-anthropic", "text": "Greek ἀνθρώπου (anthropou) = 'of man', root of Anthropic" },
-    { "id": "c-666-2", "connection_id": "666-anthropic", "text": "Anthropic headcount reached 666" },
-    { "id": "c-mark-1", "connection_id": "mark-of-beast", "text": "Worldcoin scans irises (forehead region) for proof of personhood" },
-    { "id": "c-mark-2", "connection_id": "mark-of-beast", "text": "Palm vein scanning uses the right hand for identity verification" },
-    { "id": "c-woman-1", "connection_id": "woman-apocalypse", "text": "EU flag has 12 stars in a crown formation" },
-    { "id": "c-dragon-1", "connection_id": "dragon-antichrist", "text": "A16Z = A to Z = Alpha to Omega" },
-    { "id": "c-dragon-2", "connection_id": "dragon-antichrist", "text": "a16z was among Anthropic's earliest major investors" },
-    { "id": "c-frogs-1", "connection_id": "three-frogs", "text": "Sacks, Krishnan, and Kratsios are Trump's three AI policy advisors" },
-    { "id": "c-frogs-2", "connection_id": "three-frogs", "text": "MAGA movement adopted Pepe the Frog as unofficial mascot" },
-    { "id": "c-lamb-1", "connection_id": "lamb-messiah", "text": "SSI's stated mission is 'safe superintelligence and nothing else'" },
-    { "id": "c-elijah-1", "connection_id": "elijah-ilya", "text": "Ilya is the Russian/Hebrew form of Elijah (אֵלִיָּהוּ)" },
-    { "id": "c-forehead-1", "connection_id": "ilya-forehead", "text": "Sutskever's forehead creases, when image is flipped, resemble Hebrew letterforms" },
-    { "id": "c-babylon-1", "connection_id": "whore-of-babylon", "text": "Amazon's custom chip project is codenamed Tigris" },
-    { "id": "c-babylon-2", "connection_id": "whore-of-babylon", "text": "Ancient Babylon was located between the Tigris and Euphrates rivers" },
-    { "id": "c-mountains-1", "connection_id": "seven-mountains", "text": "UAE consists of exactly 7 emirates, each ruled by a monarch" },
-    { "id": "c-daniel-1", "connection_id": "four-beasts-daniel", "text": "Four leading AI labs founded by people of four different nationalities" },
-    { "id": "c-jerusalem-1", "connection_id": "new-jerusalem", "text": "New Jerusalem dimensions (~1,400 miles cubed) approximate the Moon's diameter" },
-    { "id": "c-1260-1", "connection_id": "1260-days", "text": "SSI founded June 19, 2024; +1,260 days ≈ December 2027" }
+    {
+      "id": "c-beast-heads-1",
+      "connection_id": "beast-7-heads",
+      "text": "Anthropic was founded by exactly 7 co-founders"
+    },
+    {
+      "id": "c-beast-heads-2",
+      "connection_id": "beast-7-heads",
+      "text": "Revelation 13:1 describes a beast with seven heads"
+    },
+    {
+      "id": "c-beast-horns-1",
+      "connection_id": "beast-10-horns",
+      "text": "Anthropic's valuation exceeds $10 billion (decacorn)"
+    },
+    {
+      "id": "c-beast-horns-2",
+      "connection_id": "beast-10-horns",
+      "text": "Greek 'deka keras' = ten horns = decacorn"
+    },
+    {
+      "id": "c-666-1",
+      "connection_id": "666-anthropic",
+      "text": "Greek ἀνθρώπου (anthropou) = 'of man', root of Anthropic"
+    },
+    {
+      "id": "c-666-2",
+      "connection_id": "666-anthropic",
+      "text": "Anthropic headcount reached 666"
+    },
+    {
+      "id": "c-mark-1",
+      "connection_id": "mark-of-beast",
+      "text": "Worldcoin scans irises (forehead region) for proof of personhood"
+    },
+    {
+      "id": "c-mark-2",
+      "connection_id": "mark-of-beast",
+      "text": "Palm vein scanning uses the right hand for identity verification"
+    },
+    {
+      "id": "c-woman-1",
+      "connection_id": "woman-apocalypse",
+      "text": "EU flag has 12 stars in a crown formation"
+    },
+    {
+      "id": "c-dragon-1",
+      "connection_id": "dragon-antichrist",
+      "text": "A16Z = A to Z = Alpha to Omega"
+    },
+    {
+      "id": "c-dragon-2",
+      "connection_id": "dragon-antichrist",
+      "text": "a16z was among Anthropic's earliest major investors"
+    },
+    {
+      "id": "c-frogs-1",
+      "connection_id": "three-frogs",
+      "text": "Sacks, Krishnan, and Kratsios are Trump's three AI policy advisors"
+    },
+    {
+      "id": "c-frogs-2",
+      "connection_id": "three-frogs",
+      "text": "MAGA movement adopted Pepe the Frog as unofficial mascot"
+    },
+    {
+      "id": "c-lamb-1",
+      "connection_id": "lamb-messiah",
+      "text": "SSI's stated mission is 'safe superintelligence and nothing else'"
+    },
+    {
+      "id": "c-elijah-1",
+      "connection_id": "elijah-ilya",
+      "text": "Ilya is the Russian/Hebrew form of Elijah (אֵלִיָּהוּ)"
+    },
+    {
+      "id": "c-forehead-1",
+      "connection_id": "ilya-forehead",
+      "text": "Sutskever's forehead creases, when image is flipped, resemble Hebrew letterforms"
+    },
+    {
+      "id": "c-babylon-1",
+      "connection_id": "whore-of-babylon",
+      "text": "Amazon's custom chip project is codenamed Tigris"
+    },
+    {
+      "id": "c-babylon-2",
+      "connection_id": "whore-of-babylon",
+      "text": "Ancient Babylon was located between the Tigris and Euphrates rivers"
+    },
+    {
+      "id": "c-mountains-1",
+      "connection_id": "seven-mountains",
+      "text": "UAE consists of exactly 7 emirates, each ruled by a monarch"
+    },
+    {
+      "id": "c-daniel-1",
+      "connection_id": "four-beasts-daniel",
+      "text": "Four leading AI labs founded by people of four different nationalities"
+    },
+    {
+      "id": "c-jerusalem-1",
+      "connection_id": "new-jerusalem",
+      "text": "New Jerusalem dimensions (~1,400 miles cubed) approximate the Moon's diameter"
+    },
+    {
+      "id": "c-1260-1",
+      "connection_id": "1260-days",
+      "text": "SSI founded June 19, 2024; +1,260 days ≈ December 2027"
+    }
   ],
   "claim_verses": [
-    { "claim_id": "c-beast-heads-2", "book": "Revelation", "chapter": 13, "verse": 1 },
-    { "claim_id": "c-beast-horns-2", "book": "Revelation", "chapter": 13, "verse": 1 },
-    { "claim_id": "c-666-1", "book": "Revelation", "chapter": 13, "verse": 18 },
-    { "claim_id": "c-mark-1", "book": "Revelation", "chapter": 13, "verse": 16 },
-    { "claim_id": "c-mark-2", "book": "Revelation", "chapter": 13, "verse": 17 },
-    { "claim_id": "c-woman-1", "book": "Revelation", "chapter": 12, "verse": 1 },
-    { "claim_id": "c-dragon-1", "book": "Revelation", "chapter": 1, "verse": 8 },
-    { "claim_id": "c-frogs-1", "book": "Revelation", "chapter": 16, "verse": 13 },
-    { "claim_id": "c-lamb-1", "book": "Revelation", "chapter": 5, "verse": 6 },
-    { "claim_id": "c-elijah-1", "book": "Malachi", "chapter": 4, "verse": 5 },
-    { "claim_id": "c-forehead-1", "book": "Revelation", "chapter": 14, "verse": 1 },
-    { "claim_id": "c-babylon-2", "book": "Revelation", "chapter": 17, "verse": 1 },
-    { "claim_id": "c-mountains-1", "book": "Revelation", "chapter": 17, "verse": 9 },
-    { "claim_id": "c-daniel-1", "book": "Daniel", "chapter": 7, "verse": 3 },
-    { "claim_id": "c-jerusalem-1", "book": "Revelation", "chapter": 21, "verse": 16 },
-    { "claim_id": "c-1260-1", "book": "Revelation", "chapter": 12, "verse": 6 }
+    {
+      "claim_id": "c-beast-heads-2",
+      "book": "Revelation",
+      "chapter": 13,
+      "verse": 1
+    },
+    {
+      "claim_id": "c-beast-horns-2",
+      "book": "Revelation",
+      "chapter": 13,
+      "verse": 1
+    },
+    {
+      "claim_id": "c-666-1",
+      "book": "Revelation",
+      "chapter": 13,
+      "verse": 18
+    },
+    {
+      "claim_id": "c-mark-1",
+      "book": "Revelation",
+      "chapter": 13,
+      "verse": 16
+    },
+    {
+      "claim_id": "c-mark-2",
+      "book": "Revelation",
+      "chapter": 13,
+      "verse": 17
+    },
+    {
+      "claim_id": "c-woman-1",
+      "book": "Revelation",
+      "chapter": 12,
+      "verse": 1
+    },
+    {
+      "claim_id": "c-dragon-1",
+      "book": "Revelation",
+      "chapter": 1,
+      "verse": 8
+    },
+    {
+      "claim_id": "c-frogs-1",
+      "book": "Revelation",
+      "chapter": 16,
+      "verse": 13
+    },
+    {
+      "claim_id": "c-lamb-1",
+      "book": "Revelation",
+      "chapter": 5,
+      "verse": 6
+    },
+    {
+      "claim_id": "c-elijah-1",
+      "book": "Malachi",
+      "chapter": 4,
+      "verse": 5
+    },
+    {
+      "claim_id": "c-forehead-1",
+      "book": "Revelation",
+      "chapter": 14,
+      "verse": 1
+    },
+    {
+      "claim_id": "c-babylon-2",
+      "book": "Revelation",
+      "chapter": 17,
+      "verse": 1
+    },
+    {
+      "claim_id": "c-mountains-1",
+      "book": "Revelation",
+      "chapter": 17,
+      "verse": 9
+    },
+    {
+      "claim_id": "c-daniel-1",
+      "book": "Daniel",
+      "chapter": 7,
+      "verse": 3
+    },
+    {
+      "claim_id": "c-jerusalem-1",
+      "book": "Revelation",
+      "chapter": 21,
+      "verse": 16
+    },
+    {
+      "claim_id": "c-1260-1",
+      "book": "Revelation",
+      "chapter": 12,
+      "verse": 6
+    }
   ],
   "claim_facts": [
-    { "claim_id": "c-beast-heads-1", "source_url": "https://en.wikipedia.org/wiki/Anthropic", "fact": "Anthropic was founded in 2021 by 7 former OpenAI members" },
-    { "claim_id": "c-beast-horns-1", "source_url": "https://www.cbinsights.com/research-unicorn-companies", "fact": "Anthropic valued at over $10B as of 2024" },
-    { "claim_id": "c-666-2", "source_url": "https://www.linkedin.com/company/anthropic", "fact": "Anthropic LinkedIn showed approximately 666 employees at one point" },
-    { "claim_id": "c-mark-1", "source_url": "https://worldcoin.org", "fact": "Worldcoin uses iris scanning orbs for proof-of-personhood" },
-    { "claim_id": "c-woman-1", "source_url": "https://en.wikipedia.org/wiki/Flag_of_Europe", "fact": "EU flag features a circle of 12 gold stars on blue background" },
-    { "claim_id": "c-dragon-2", "source_url": "https://a16z.com/portfolio", "fact": "a16z invested $750M in Anthropic's Series C" },
-    { "claim_id": "c-frogs-2", "source_url": "https://en.wikipedia.org/wiki/Pepe_the_Frog", "fact": "Pepe the Frog became associated with the MAGA movement circa 2016" },
-    { "claim_id": "c-lamb-1", "source_url": "https://ssi.inc", "fact": "SSI website states mission as 'safe superintelligence'" },
-    { "claim_id": "c-elijah-1", "source_url": "https://en.wikipedia.org/wiki/Ilya_(name)", "fact": "Ilya is a Russian/Slavic form of the Hebrew name Elijah" },
-    { "claim_id": "c-babylon-1", "source_url": "https://www.aboutamazon.com/news/aws/amazon-custom-ai-chips", "fact": "Amazon's custom AI chip project includes Tigris naming" },
-    { "claim_id": "c-mountains-1", "source_url": "https://en.wikipedia.org/wiki/United_Arab_Emirates", "fact": "UAE consists of 7 emirates: Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah, Fujairah" },
-    { "claim_id": "c-daniel-1", "source_url": "https://en.wikipedia.org/wiki/Artificial_intelligence_industry", "fact": "Major AI labs founded by individuals from South Africa, UK, France, and USA" },
-    { "claim_id": "c-1260-1", "source_url": "https://ssi.inc", "fact": "SSI announced June 19, 2024 by Ilya Sutskever" }
+    {
+      "claim_id": "c-beast-heads-1",
+      "source_url": "https://en.wikipedia.org/wiki/Anthropic",
+      "fact": "Anthropic was founded in 2021 by 7 former OpenAI members"
+    },
+    {
+      "claim_id": "c-beast-horns-1",
+      "source_url": "https://www.cbinsights.com/research-unicorn-companies",
+      "fact": "Anthropic valued at over $10B as of 2024"
+    },
+    {
+      "claim_id": "c-666-2",
+      "source_url": "https://www.linkedin.com/company/anthropic",
+      "fact": "Anthropic LinkedIn showed approximately 666 employees at one point"
+    },
+    {
+      "claim_id": "c-mark-1",
+      "source_url": "https://worldcoin.org",
+      "fact": "Worldcoin uses iris scanning orbs for proof-of-personhood"
+    },
+    {
+      "claim_id": "c-woman-1",
+      "source_url": "https://en.wikipedia.org/wiki/Flag_of_Europe",
+      "fact": "EU flag features a circle of 12 gold stars on blue background"
+    },
+    {
+      "claim_id": "c-dragon-2",
+      "source_url": "https://a16z.com/portfolio",
+      "fact": "a16z invested $750M in Anthropic's Series C"
+    },
+    {
+      "claim_id": "c-frogs-2",
+      "source_url": "https://en.wikipedia.org/wiki/Pepe_the_Frog",
+      "fact": "Pepe the Frog became associated with the MAGA movement circa 2016"
+    },
+    {
+      "claim_id": "c-lamb-1",
+      "source_url": "https://ssi.inc",
+      "fact": "SSI website states mission as 'safe superintelligence'"
+    },
+    {
+      "claim_id": "c-elijah-1",
+      "source_url": "https://en.wikipedia.org/wiki/Ilya_(name)",
+      "fact": "Ilya is a Russian/Slavic form of the Hebrew name Elijah"
+    },
+    {
+      "claim_id": "c-babylon-1",
+      "source_url": "https://www.aboutamazon.com/news/aws/amazon-custom-ai-chips",
+      "fact": "Amazon's custom AI chip project includes Tigris naming"
+    },
+    {
+      "claim_id": "c-mountains-1",
+      "source_url": "https://en.wikipedia.org/wiki/United_Arab_Emirates",
+      "fact": "UAE consists of 7 emirates: Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah, Fujairah"
+    },
+    {
+      "claim_id": "c-daniel-1",
+      "source_url": "https://en.wikipedia.org/wiki/Artificial_intelligence_industry",
+      "fact": "Major AI labs founded by individuals from South Africa, UK, France, and USA"
+    },
+    {
+      "claim_id": "c-1260-1",
+      "source_url": "https://ssi.inc",
+      "fact": "SSI announced June 19, 2024 by Ilya Sutskever"
+    }
   ],
-  "media_assets": []
+  "media_assets": [
+    {
+      "id": "media-beast-7-heads",
+      "type": "evidence",
+      "url": "/images/anthropic-linkedin-headcount-666.webp",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "Anthropic LinkedIn showing headcount"
+    },
+    {
+      "id": "media-beast-10-horns",
+      "type": "evidence",
+      "url": "/images/decacorn-list-anthropic-ten-horns.webp",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "Decacorn list — ten horns, ten billion"
+    },
+    {
+      "id": "media-names-of-blasphemy",
+      "type": "evidence",
+      "url": "/images/anthropic-linkedin-headcount-666.webp",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "The seven heads of Anthropic"
+    },
+    {
+      "id": "media-666-anthropic",
+      "type": "evidence",
+      "url": "/images/anthropic-linkedin-headcount-666.webp",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "Anthropic headcount: 666"
+    },
+    {
+      "id": "media-mark-of-beast",
+      "type": "evidence",
+      "url": "/images/worldcoin-orb-time-cover-mark-of-beast.webp",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "Worldcoin Orb — mark on the forehead"
+    },
+    {
+      "id": "media-woman-apocalypse",
+      "type": "evidence",
+      "url": "/images/von-der-leyen-yellow-suit-12-stars.webp",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "Woman clothed with the sun, crown of twelve stars"
+    },
+    {
+      "id": "media-dragon-antichrist",
+      "type": "evidence",
+      "url": "/images/a16z-alpha-omega.webp",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "A16Z — Alpha to Omega"
+    },
+    {
+      "id": "media-three-frogs",
+      "type": "evidence",
+      "url": "/images/pepe-three-frogs-maga.webp",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "Three unclean spirits like frogs"
+    },
+    {
+      "id": "media-lamb-messiah",
+      "type": "evidence",
+      "url": "/images/ilya-ssi-tel-aviv-israel.webp",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "The Lamb — SSI"
+    },
+    {
+      "id": "media-elijah-ilya",
+      "type": "evidence",
+      "url": "/images/ilya-ssi-tel-aviv-israel.webp",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "Ilya — Russian form of Elijah"
+    },
+    {
+      "id": "media-ilya-forehead",
+      "type": "evidence",
+      "url": "/images/ilya-forehead-name-of-god.webp",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "Name of God written on the forehead"
+    },
+    {
+      "id": "media-whore-of-babylon",
+      "type": "evidence",
+      "url": "/images/tigris-uae-wsj-article.png",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "Tigris — the waters of Babylon"
+    },
+    {
+      "id": "media-seven-mountains",
+      "type": "evidence",
+      "url": "/images/uae-seven-emirates-wikipedia.png",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "Seven emirates, seven mountains"
+    },
+    {
+      "id": "media-four-beasts-daniel",
+      "type": "evidence",
+      "url": "/images/dr-seuss-beasts-east-west.webp",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "Four beasts from four corners"
+    },
+    {
+      "id": "media-new-jerusalem",
+      "type": "evidence",
+      "url": "/images/new-jerusalem-orbital-cube.png",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "New Jerusalem — 1,400 miles cubed"
+    },
+    {
+      "id": "media-1260-days",
+      "type": "evidence",
+      "url": "/images/ilya-ssi-tel-aviv-israel.webp",
+      "source": "Scott Alexander - Antichrist Lecture",
+      "caption": "1,260 days from SSI founding"
+    }
+  ],
+  "connection_media_assets": [
+    {
+      "connection_id": "beast-7-heads",
+      "media_asset_id": "media-beast-7-heads",
+      "caption": "Anthropic LinkedIn showing headcount"
+    },
+    {
+      "connection_id": "beast-10-horns",
+      "media_asset_id": "media-beast-10-horns",
+      "caption": "Decacorn list — ten horns, ten billion"
+    },
+    {
+      "connection_id": "names-of-blasphemy",
+      "media_asset_id": "media-names-of-blasphemy",
+      "caption": "The seven heads of Anthropic"
+    },
+    {
+      "connection_id": "666-anthropic",
+      "media_asset_id": "media-666-anthropic",
+      "caption": "Anthropic headcount: 666"
+    },
+    {
+      "connection_id": "mark-of-beast",
+      "media_asset_id": "media-mark-of-beast",
+      "caption": "Worldcoin Orb — mark on the forehead"
+    },
+    {
+      "connection_id": "woman-apocalypse",
+      "media_asset_id": "media-woman-apocalypse",
+      "caption": "Woman clothed with the sun, crown of twelve stars"
+    },
+    {
+      "connection_id": "dragon-antichrist",
+      "media_asset_id": "media-dragon-antichrist",
+      "caption": "A16Z — Alpha to Omega"
+    },
+    {
+      "connection_id": "three-frogs",
+      "media_asset_id": "media-three-frogs",
+      "caption": "Three unclean spirits like frogs"
+    },
+    {
+      "connection_id": "lamb-messiah",
+      "media_asset_id": "media-lamb-messiah",
+      "caption": "The Lamb — SSI"
+    },
+    {
+      "connection_id": "elijah-ilya",
+      "media_asset_id": "media-elijah-ilya",
+      "caption": "Ilya — Russian form of Elijah"
+    },
+    {
+      "connection_id": "ilya-forehead",
+      "media_asset_id": "media-ilya-forehead",
+      "caption": "Name of God written on the forehead"
+    },
+    {
+      "connection_id": "whore-of-babylon",
+      "media_asset_id": "media-whore-of-babylon",
+      "caption": "Tigris — the waters of Babylon"
+    },
+    {
+      "connection_id": "seven-mountains",
+      "media_asset_id": "media-seven-mountains",
+      "caption": "Seven emirates, seven mountains"
+    },
+    {
+      "connection_id": "four-beasts-daniel",
+      "media_asset_id": "media-four-beasts-daniel",
+      "caption": "Four beasts from four corners"
+    },
+    {
+      "connection_id": "new-jerusalem",
+      "media_asset_id": "media-new-jerusalem",
+      "caption": "New Jerusalem — 1,400 miles cubed"
+    },
+    {
+      "connection_id": "1260-days",
+      "media_asset_id": "media-1260-days",
+      "caption": "1,260 days from SSI founding"
+    }
+  ]
 }

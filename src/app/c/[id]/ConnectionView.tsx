@@ -120,6 +120,24 @@ export default function ConnectionView({ id }: { id: string }) {
           </div>
         )}
 
+        {/* Evidence Images */}
+        {detail.media?.length > 0 && (
+          <div className="mt-8">
+            <div className="h-px bg-red-900/30 mb-8" />
+            <h2 className="text-xs text-zinc-500 uppercase tracking-wider mb-4">Evidence Images</h2>
+            <div className="space-y-4">
+              {detail.media.map(m => (
+                <div key={m.id} className="rounded-lg overflow-hidden border border-zinc-800">
+                  <img src={m.url} alt={m.caption || ''} className="w-full" />
+                  {m.caption && (
+                    <div className="text-sm text-zinc-400 p-3 bg-zinc-900/50">{m.caption}</div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Share */}
         <div className="mt-12 mb-8">
           <button

@@ -129,6 +129,23 @@ export default function EvidencePanel({ connectionId, onClose }: EvidencePanelPr
             </div>
           )}
 
+          {/* Media */}
+          {detail.media?.length > 0 && (
+            <div className="mb-6">
+              <h3 className="text-xs text-zinc-500 uppercase tracking-wider mb-3">Evidence Images</h3>
+              <div className="space-y-3">
+                {detail.media.map(m => (
+                  <div key={m.id} className="rounded overflow-hidden border border-zinc-800">
+                    <img src={m.url} alt={m.caption || ''} className="w-full" />
+                    {m.caption && (
+                      <div className="text-xs text-zinc-400 p-2 bg-zinc-900">{m.caption}</div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Votes */}
           {detail.votes && Object.keys(detail.votes).length > 0 && (
             <div className="mb-6">

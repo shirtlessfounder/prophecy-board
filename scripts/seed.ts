@@ -9,7 +9,8 @@ interface SeedData {
   claims: { id: string; connection_id: string; text: string }[];
   claim_verses: { claim_id: string; book: string; chapter: number; verse: number }[];
   claim_facts: { claim_id: string; source_url: string; fact: string }[];
-  media_assets: { entity_id: string; type: string; url: string; caption?: string }[];
+  media_assets: { id: string; type: string; url: string; source?: string; caption?: string }[];
+  connection_media_assets?: { connection_id: string; media_asset_id: string; caption?: string }[];
 }
 
 async function seed() {
@@ -82,6 +83,32 @@ async function seed() {
     );
   }
   console.log(`  ✓ ${data.claim_facts.length} claim facts`);
+
+  // Media assets
+  if (data.media_assets?.length) {
+    for (const ma of data.media_assets) {
+      await pool.query(
+        `INSERT INTO media_assets (id, type, url, source, attribution)
+         VALUES ($1, $2, $3, $4, $5)
+         ON CONFLICT (id) DO UPDATE SET url = $3, source = $4`,
+        [ma.id, ma.type, ma.url, ma.source || null, ma.caption || null]
+      );
+    }
+    console.log(`  ✓ ${data.media_assets.length} media assets`);
+  }
+
+  // Connection-media links
+  if (data.connection_media_assets?.length) {
+    for (const cma of data.connection_media_assets) {
+      await pool.query(
+        `INSERT INTO connection_media_assets (connection_id, media_asset_id, caption)
+         VALUES ($1, $2, $3)
+         ON CONFLICT DO NOTHING`,
+        [cma.connection_id, cma.media_asset_id, cma.caption || null]
+      );
+    }
+    console.log(`  ✓ ${data.connection_media_assets.length} connection-media links`);
+  }
 
   console.log('Seed complete.');
   await pool.end();
