@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
     const type = searchParams.get('type');
     const search = searchParams.get('search');
 
-    let query = 'SELECT * FROM entities';
+    let query = 'SELECT * FROM p_entities';
     const params: string[] = [];
     const conditions: string[] = [];
 

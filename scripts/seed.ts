@@ -13,7 +13,9 @@ interface SeedData {
 }
 
 async function seed() {
-  const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+  const connectionString = process.env.DATABASE_URL || process.env.DB_URL;
+  if (!connectionString) throw new Error('Missing DATABASE_URL (or DB_URL)');
+  const pool = new Pool({ connectionString });
   const data: SeedData = JSON.parse(readFileSync(join(__dirname, '..', 'seed', 'v1.json'), 'utf-8'));
 
   console.log(`Seeding v${data.version}...`);
@@ -21,7 +23,7 @@ async function seed() {
   // Entities
   for (const e of data.entities) {
     await pool.query(
-      `INSERT INTO entities (id, type, name, metadata_json, image_url)
+      `INSERT INTO p_entities (id, type, name, metadata_json, image_url)
        VALUES ($1, $2, $3, $4, $5)
        ON CONFLICT (id) DO UPDATE SET type = $2, name = $3, metadata_json = $4, image_url = $5`,
       [e.id, e.type, e.name, JSON.stringify(e.metadata_json || {}), e.image_url || null]
@@ -32,7 +34,7 @@ async function seed() {
   // Connections
   for (const c of data.connections) {
     await pool.query(
-      `INSERT INTO connections (id, source_entity_id, modern_entity_id, claim, reasoning, status)
+      `INSERT INTO p_connections (id, source_entity_id, modern_entity_id, claim, reasoning, status)
        VALUES ($1, $2, $3, $4, $5, $6)
        ON CONFLICT (id) DO UPDATE SET claim = $4, reasoning = $5, status = $6`,
       [c.id, c.source_entity, c.modern_entity, c.claim, c.reasoning, c.status]
@@ -43,7 +45,7 @@ async function seed() {
   // Claims
   for (const c of data.claims) {
     await pool.query(
-      `INSERT INTO claims (id, connection_id, text)
+      `INSERT INTO p_claims (id, connection_id, text)
        VALUES ($1, $2, $3)
        ON CONFLICT (id) DO UPDATE SET text = $3`,
       [c.id, c.connection_id, c.text]
@@ -54,7 +56,7 @@ async function seed() {
   // Claim verses — link claims to verses by book/chapter/verse lookup
   for (const cv of data.claim_verses) {
     const { rows } = await pool.query(
-      'SELECT id FROM verses WHERE book = $1 AND chapter = $2 AND verse = $3',
+      'SELECT id FROM p_verses WHERE book = $1 AND chapter = $2 AND verse = $3',
       [cv.book, cv.chapter, cv.verse]
     );
     if (rows.length === 0) {
@@ -62,7 +64,7 @@ async function seed() {
       continue;
     }
     await pool.query(
-      `INSERT INTO claim_verses (claim_id, verse_id)
+      `INSERT INTO p_claim_verses (claim_id, verse_id)
        VALUES ($1, $2)
        ON CONFLICT DO NOTHING`,
       [cv.claim_id, rows[0].id]
@@ -73,7 +75,7 @@ async function seed() {
   // Claim facts
   for (const cf of data.claim_facts) {
     await pool.query(
-      `INSERT INTO claim_facts (claim_id, source_url, fact_text)
+      `INSERT INTO p_claim_facts (claim_id, source_url, fact_text)
        VALUES ($1, $2, $3)
        ON CONFLICT DO NOTHING`,
       [cf.claim_id, cf.source_url, cf.fact]

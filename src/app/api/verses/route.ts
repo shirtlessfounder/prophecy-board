@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
       // Single verse with ±context
       const verseNum = parseInt(verse, 10);
       const { rows } = await pool.query(
-        `SELECT * FROM verses
+        `SELECT * FROM p_verses
          WHERE book = $1 AND chapter = $2 AND verse BETWEEN $3 AND $4
          ORDER BY verse`,
         [book, chapterNum, Math.max(1, verseNum - context), verseNum + context]
@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
     } else {
       // Full chapter
       const { rows } = await pool.query(
-        'SELECT * FROM verses WHERE book = $1 AND chapter = $2 ORDER BY verse',
+        'SELECT * FROM p_verses WHERE book = $1 AND chapter = $2 ORDER BY verse',
         [book, chapterNum]
       );
       return NextResponse.json(rows);

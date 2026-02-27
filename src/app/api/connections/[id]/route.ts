@@ -13,9 +13,9 @@ export async function GET(
       `SELECT c.*,
         se.name as source_name, se.type as source_type, se.metadata_json as source_metadata, se.image_url as source_image,
         me.name as modern_name, me.type as modern_type, me.metadata_json as modern_metadata, me.image_url as modern_image
-      FROM connections c
-      LEFT JOIN entities se ON c.source_entity_id = se.id
-      LEFT JOIN entities me ON c.modern_entity_id = me.id
+      FROM p_connections c
+      LEFT JOIN p_entities se ON c.source_entity_id = se.id
+      LEFT JOIN p_entities me ON c.modern_entity_id = me.id
       WHERE c.id = $1`,
       [id]
     );
@@ -28,15 +28,15 @@ export async function GET(
 
     // Claims with their verses and facts
     const { rows: claims } = await pool.query(
-      'SELECT * FROM claims WHERE connection_id = $1 ORDER BY created_at',
+      'SELECT * FROM p_claims WHERE connection_id = $1 ORDER BY created_at',
       [id]
     );
 
     for (const claim of claims) {
       // Verses linked to this claim
       const { rows: verses } = await pool.query(
-        `SELECT v.* FROM claim_verses cv
-         JOIN verses v ON cv.verse_id = v.id
+        `SELECT v.* FROM p_claim_verses cv
+         JOIN p_verses v ON cv.verse_id = v.id
          WHERE cv.claim_id = $1
          ORDER BY v.book, v.chapter, v.verse`,
         [claim.id]
@@ -45,7 +45,7 @@ export async function GET(
 
       // Facts linked to this claim
       const { rows: facts } = await pool.query(
-        'SELECT * FROM claim_facts WHERE claim_id = $1 ORDER BY created_at',
+        'SELECT * FROM p_claim_facts WHERE claim_id = $1 ORDER BY created_at',
         [claim.id]
       );
       claim.facts = facts;
@@ -53,8 +53,8 @@ export async function GET(
 
     // Media assets
     const { rows: media } = await pool.query(
-      `SELECT ma.*, cma.caption FROM connection_media_assets cma
-       JOIN media_assets ma ON cma.media_asset_id = ma.id
+      `SELECT ma.*, cma.caption FROM p_connection_media_assets cma
+       JOIN p_media_assets ma ON cma.media_asset_id = ma.id
        WHERE cma.connection_id = $1`,
       [id]
     );
@@ -62,7 +62,7 @@ export async function GET(
     // Vote tallies
     const { rows: voteTallies } = await pool.query(
       `SELECT axis, SUM(value) as score, COUNT(*) as count
-       FROM votes WHERE connection_id = $1
+       FROM p_votes WHERE connection_id = $1
        GROUP BY axis`,
       [id]
     );

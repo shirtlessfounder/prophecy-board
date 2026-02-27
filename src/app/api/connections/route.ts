@@ -11,9 +11,9 @@ export async function GET(req: NextRequest) {
       SELECT c.*,
         se.name as source_name, se.type as source_type, se.metadata_json as source_metadata,
         me.name as modern_name, me.type as modern_type, me.metadata_json as modern_metadata
-      FROM connections c
-      LEFT JOIN entities se ON c.source_entity_id = se.id
-      LEFT JOIN entities me ON c.modern_entity_id = me.id
+      FROM p_connections c
+      LEFT JOIN p_entities se ON c.source_entity_id = se.id
+      LEFT JOIN p_entities me ON c.modern_entity_id = me.id
     `;
     const params: string[] = [];
     const conditions: string[] = [];

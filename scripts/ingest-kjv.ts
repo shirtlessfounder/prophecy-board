@@ -8,7 +8,9 @@ interface KJVBook {
 }
 
 async function ingestKJV() {
-  const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+  const connectionString = process.env.DATABASE_URL || process.env.DB_URL;
+  if (!connectionString) throw new Error('Missing DATABASE_URL (or DB_URL)');
+  const pool = new Pool({ connectionString });
 
   console.log('Downloading KJV Bible...');
   const res = await fetch(KJV_URL);
@@ -37,7 +39,7 @@ async function ingestKJV() {
 
       if (values.length > 0) {
         await pool.query(
-          `INSERT INTO verses (book, chapter, verse, text_kjv)
+          `INSERT INTO p_verses (book, chapter, verse, text_kjv)
            VALUES ${values.join(', ')}
            ON CONFLICT (book, chapter, verse) DO UPDATE SET text_kjv = EXCLUDED.text_kjv`,
           params
